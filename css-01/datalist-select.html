@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <label for="opcion">Opciones</label>
+    <select name="opcion" id="opcion">
+      <option value=""></option>
+      <option value="1">Opción 1</option>
+      <option value="2">Opción 2</option>
+      <option value="5">Opción 5</option>
+    </select>
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
+    <label for="ice-cream-choice">Choose a flavor:</label>
+    <input
+      list="ice-cream-flavors"
+      id="ice-cream-choice"
+      name="ice-cream-choice"
+    />
+
+    <datalist id="ice-cream-flavors">
+      <option value="Chocolate"></option>
+      <option value="Coconut"></option>
+      <option value="Mint"></option>
+      <option value="Strawberry"></option>
+      <option value="Vanilla"></option>
+    </datalist>
+  </body>
+</html>
