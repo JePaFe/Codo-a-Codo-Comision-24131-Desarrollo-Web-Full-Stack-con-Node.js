@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularios</title>
+  </head>
+  <body>
+    <h1>Formularios</h1>
+
+    <form action="https://formsubmit.co/j.ferreira@bue.edu.ar" method="post">
+      <fieldset>
+        <legend>Datos básicos</legend>
+        <div>
+          <label for="nombre">Nombre: </label>
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            minlength="2"
+            maxlength="5"
+            required
+            value=""
+            placeholder="Ingrese su nombre"
+          />
+        </div>
+
+        <div>
+          <label for="password">Contraseña: </label>
+          <input type="password" name="password" id="password" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Otros datos</legend>
+        <div>
+          <h2>Lenguajes</h2>
+
+          <label for="html">HTML: </label>
+          <input type="checkbox" name="html" id="html" />
+
+          <label for="css">CSS: </label>
+          <input type="checkbox" name="css" id="css" value="1" />
+        </div>
+
+        <div>
+          <h2>Horarios</h2>
+
+          <label for="mañana">Mañana: </label>
+          <input type="radio" name="horario" id="mañana" value="1" />
+
+          <label for="tarde">Tarde: </label>
+          <input type="radio" name="horario" id="tarde" value="2" />
+
+          <label for="noche">Noche: </label>
+          <input type="radio" name="horario" id="noche" value="3" />
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="mensaje">Mensaje: </label>
+        <textarea name="mensaje" id="mensaje" cols="30" rows="10" readonly>Algo...</textarea>
+      </div>
+
+      <div>
+        <label for="provincia">Provincia: </label>
+        <select name="provincia" id="provincia" required>
+          <option value=""></option>
+          <option value="1">Buenos Aires</option>
+          <option value="2" selected>Cordoba</option>
+          <option value="3">Tucuman</option>
+        </select>
+      </div>
+
+      <!-- <input type="submit" value="Enviar" /> -->
+      <!-- <input type="reset" value="Borrar"> -->
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <!-- http://127.0.0.1:5500/index.html?nombre=Juan -->
+  </body>
+</html>
