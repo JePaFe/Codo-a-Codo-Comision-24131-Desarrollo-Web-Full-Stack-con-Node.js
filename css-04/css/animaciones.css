@@ -1,0 +1,28 @@
+div {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1em;
+}
+
+.box {
+  /* position: relative;
+  z-index: -1; */
+  background-color: blue;
+  transition: height 3s, background-color 500ms;
+  transition-delay: 400ms;
+}
+
+.box:hover {
+  /* transform: rotate(-45deg); */
+  /* transform: scale(2, 0.5); */
+  /* transform: translate(10em); */
+  /* transform: skew(45deg); */
+
+  height: 200px;
+  background-color: red;
+}
+
+.circle {
+  background-color: orange;
+  border-radius: 50%;
+}

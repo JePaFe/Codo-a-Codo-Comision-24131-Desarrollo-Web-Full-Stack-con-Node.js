@@ -1,0 +1,84 @@
+a {
+  text-decoration: none;
+  /* color: red; */
+}
+
+h1,
+h2,
+h3 {
+  color: darkmagenta;
+}
+
+/* section p {
+    color: green;
+} */
+
+/* section > p {
+  color: red;
+} */
+
+/* h2 + p {
+  color: red;O
+} */
+
+/* h3 ~ p {
+  color: red;
+} */
+
+/* article p:first-of-type {
+  color: red;
+} */
+
+/* article p:last-of-type {
+  color: red;
+} */
+
+/* article p:nth-child(even) {
+  color: red;
+} */
+
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: gray;
+}
+
+a:active {
+  border: 1px solid red;
+}
+
+a:hover {
+  /* text-decoration: overline; */
+  color: chartreuse;
+  cursor: crosshair;
+}
+
+h2::first-letter,
+h3::first-letter {
+  font-size: 3em;
+  color: red;
+}
+
+h1 + p::first-line {
+  color: chartreuse;
+}
+
+p::selection {
+  background-color: brown;
+  color: snow;
+}
+
+/* h1 {
+  display: inline;
+} */
+
+h1::before {
+  content: "- ";
+}
+
+p::after {
+  content: "...";
+  color: red;
+}
