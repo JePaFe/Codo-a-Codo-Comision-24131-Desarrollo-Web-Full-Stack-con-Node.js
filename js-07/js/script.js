@@ -31,7 +31,7 @@ const renderTasks = () => {
   });
 };
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   //   console.log(event);
 
@@ -57,16 +57,44 @@ form.addEventListener("submit", (event) => {
   if (!erroresValidacion) {
     // console.log(title);
     const task = {
-      id: Date.now(),
+      // id: Date.now(),
       title: title,
       complete: false,
     };
     // console.log(task);
 
-    tasks.push(task);
-    console.log(tasks);
+    // fetch("http://localhost:3000/tasks", {
+    //   method: "POST",
+    //   body: JSON.stringify(task),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((json) => console.log(json))
+    //   .catch((error) => console.log(error));
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    try {
+      const response = await fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        body: JSON.stringify(task),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      const json = await response.json();
+
+      task.id = json.id;
+
+      tasks.push(task);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // console.log(tasks);
+
+    // localStorage.setItem("tasks", JSON.stringify(tasks));
 
     taskInput.value = "";
     // form.reset();
@@ -97,10 +125,20 @@ taskList.addEventListener("click", (event) => {
     task.complete = !task.complete;
     // console.log(task);
 
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(task),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+
     // renderTasks();
     event.target.closest("li").querySelector("p").classList.toggle("done");
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    // localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   if (event.target.classList.contains("bx-trash")) {
@@ -109,16 +147,25 @@ taskList.addEventListener("click", (event) => {
 
     tasks.splice(taskindex, 1);
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    // localStorage.setItem("tasks", JSON.stringify(tasks));
 
     event.target.closest("li").remove();
   }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  // tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  renderTasks();
+  fetch("http://localhost:3000/tasks")
+    .then((response) => response.json())
+    .then((json) => {
+      tasks = json;
+      renderTasks();
+    });
 
   // No funciona
   //   const check = document.querySelector(".bx-check");
